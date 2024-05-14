@@ -1,8 +1,8 @@
--- This file is intended for notes
--- and for demonstrating how to work
--- with SQLite in Codespaces.
+SELECT A.TITLE
+, (COUNT(A.BOOKID))-(COUNT(B.BOOKID)) COPIESAVAIL
 
--- These two statements operate on the 
--- restaurant.db SQLite database.
-SELECT * FROM Dishes;
-SELECT * FROM Customers;
+FROM LIBRARY.BOOKS A
+INNER JOIN LIBARY.LOANS B
+  ON A.BOOKID = B.BOOKID
+
+WHERE UPPER(A.TITLE) = 'DRACULA'

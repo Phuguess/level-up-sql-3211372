@@ -1,2 +1,17 @@
 -- Prepare a report of the library patrons
 -- who have checked out the fewest books.
+
+SELECT A.PATRONID
+, A.FIRSTNAME
+, A.LASTNAME
+, COUNT(B.BOOKID) NUMBOOKS
+
+FROM PATRONS A
+INNER JOIN LOANS B
+  ON A.PATRONID = B.PATRONID
+
+GROUP BY A.PATRONID
+, A.FIRSTNAME
+, A.LASTNAME
+ORDER BY NUMBOOKS ASC
+LIMIT 5
